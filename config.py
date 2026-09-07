@@ -61,7 +61,7 @@ GEMINI_IMAGE_MODEL = "imagen-3.0-generate-002"
 # ============================================================
 # TikTok API Endpoints (v2)
 # ============================================================
-TIKTOK_AUTH_URL = "https://www.tiktok.com/v2/auth/authorize/"
+TIKTOK_AUTH_URL = "https://www.tiktok.com/v2/auth/authorize"
 TIKTOK_TOKEN_URL = "https://open.tiktokapis.com/v2/oauth/token/"
 TIKTOK_CREATOR_INFO_URL = "https://open.tiktokapis.com/v2/post/publish/creator_info/query/"
 TIKTOK_INBOX_INIT_URL = "https://open.tiktokapis.com/v2/post/publish/inbox/video/init/"
