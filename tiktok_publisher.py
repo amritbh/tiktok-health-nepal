@@ -96,7 +96,7 @@ def run_oauth_flow():
     auth_params = {
         "client_key": TIKTOK_CLIENT_KEY,
         "response_type": "code",
-        "scope": "user.info.basic,video.upload,video.publish",
+        "scope": "video.upload,video.publish",
         "redirect_uri": TIKTOK_REDIRECT_URI,
         "state": csrf_state,
         "code_challenge": code_challenge,
