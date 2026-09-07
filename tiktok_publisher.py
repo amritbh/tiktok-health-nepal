@@ -18,6 +18,9 @@ import argparse
 import json
 import os
 import sys
+import secrets
+import hashlib
+import base64
 import time
 import webbrowser
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -84,6 +87,10 @@ def run_oauth_flow():
     """
     validate_tiktok_keys()
 
+    # Generate PKCE verifier and challenge
+    code_verifier = secrets.token_urlsafe(32)
+    code_challenge = base64.urlsafe_b64encode(hashlib.sha256(code_verifier.encode('ascii')).digest()).decode('ascii').rstrip('=')
+
     # Build authorization URL
     csrf_state = f"tiktok_health_{int(time.time())}"
     auth_params = {
@@ -92,6 +99,8 @@ def run_oauth_flow():
         "scope": "user.info.basic,video.upload,video.publish",
         "redirect_uri": TIKTOK_REDIRECT_URI,
         "state": csrf_state,
+        "code_challenge": code_challenge,
+        "code_challenge_method": "S256",
     }
     auth_url = f"{TIKTOK_AUTH_URL}?{urlencode(auth_params)}"
 
@@ -132,6 +141,7 @@ def run_oauth_flow():
         "code": auth_code,
         "grant_type": "authorization_code",
         "redirect_uri": TIKTOK_REDIRECT_URI,
+        "code_verifier": code_verifier,
     }
 
     resp = requests.post(TIKTOK_TOKEN_URL, json=token_data)
