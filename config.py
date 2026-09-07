@@ -19,7 +19,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 TIKTOK_CLIENT_KEY = os.getenv("TIKTOK_CLIENT_KEY", "")
 TIKTOK_CLIENT_SECRET = os.getenv("TIKTOK_CLIENT_SECRET", "")
-TIKTOK_REDIRECT_URI = os.getenv("TIKTOK_REDIRECT_URI", "http://localhost:8585/callback")
+TIKTOK_REDIRECT_URI = os.getenv("TIKTOK_REDIRECT_URI", "https://amritbh.github.io/tiktok-health-nepal/docs/")
 TIKTOK_ACCESS_TOKEN = os.getenv("TIKTOK_ACCESS_TOKEN", "")
 TIKTOK_REFRESH_TOKEN = os.getenv("TIKTOK_REFRESH_TOKEN", "")
 

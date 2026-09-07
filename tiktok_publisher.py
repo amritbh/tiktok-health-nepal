@@ -104,28 +104,29 @@ def run_oauth_flow():
     }
     auth_url = f"{TIKTOK_AUTH_URL}?{urlencode(auth_params)}"
 
-    # Parse callback port
-    parsed_redirect = urlparse(TIKTOK_REDIRECT_URI)
-    port = parsed_redirect.port or 8585
-
     print("\n[TikTok Auth] Starting OAuth2 flow...")
-    print(f"[TikTok Auth] Callback server on port {port}")
-    print(f"[TikTok Auth] Opening browser for authorization...\n")
-
-    # Start local server
-    server = HTTPServer(("localhost", port), OAuthCallbackHandler)
-    server.timeout = 120  # 2 minute timeout
+    print("[TikTok Auth] Opening browser for authorization...\n")
 
     # Open browser
     webbrowser.open(auth_url)
-    print("[TikTok Auth] Waiting for authorization (2 min timeout)...")
-
-    # Wait for callback
-    while OAuthCallbackHandler.auth_code is None:
-        server.handle_request()
-
-    auth_code = OAuthCallbackHandler.auth_code
-    server.server_close()
+    
+    print("\n" + "="*60)
+    print("Please log in and authorize the app in your browser.")
+    print("After authorizing, you will be redirected to a blank page.")
+    print("Look at the URL in your browser's address bar.")
+    print(f"It will look like: {TIKTOK_REDIRECT_URI}?code=....")
+    print("="*60 + "\n")
+    
+    redirected_url = input("Paste the ENTIRE URL you were redirected to here: ").strip()
+    
+    # Extract code from URL
+    try:
+        parsed_url = urlparse(redirected_url)
+        params = parse_qs(parsed_url.query)
+        auth_code = params["code"][0]
+    except Exception as e:
+        print(f"[ERROR] Failed to extract authorization code from URL. Did you paste the right URL? Error: {e}")
+        sys.exit(1)
 
     if not auth_code:
         print("[ERROR] Did not receive authorization code.")
