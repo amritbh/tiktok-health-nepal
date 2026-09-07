@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - TikTok Health Nepal</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #333; line-height: 1.7; }
+    h1 { color: #1a1a2e; border-bottom: 2px solid #e94560; padding-bottom: 12px; }
+    h2 { color: #1a1a2e; margin-top: 32px; }
+    a { color: #e94560; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <p><strong>TikTok Health Nepal</strong><br>Last updated: September 7, 2026</p>
+
+  <h2>1. Overview</h2>
+  <p>TikTok Health Nepal is an open source health education video generator. This privacy policy explains how the application handles data.</p>
+
+  <h2>2. Data We Collect</h2>
+  <p>This application collects and stores the following data <strong>locally on your device only</strong>:</p>
+  <ul>
+    <li><strong>TikTok API Tokens</strong>: OAuth access and refresh tokens required to publish videos to your TikTok account. These are stored in a local <code>.env</code> file that is never committed to version control.</li>
+    <li><strong>Generated Content</strong>: Videos, audio clips, and images generated during the pipeline process are stored locally in the <code>output/</code> and <code>assets/</code> directories.</li>
+  </ul>
+
+  <h2>3. Data We Do Not Collect</h2>
+  <ul>
+    <li>We do not collect personal information</li>
+    <li>We do not track user activity or analytics</li>
+    <li>We do not store data on external servers</li>
+    <li>We do not share any data with third parties</li>
+    <li>We do not access your TikTok followers, messages, or personal profile data</li>
+  </ul>
+
+  <h2>4. TikTok API Usage</h2>
+  <p>This application uses the TikTok Content Posting API to:</p>
+  <ul>
+    <li>Upload videos you have explicitly reviewed and approved</li>
+    <li>Check your account eligibility for posting</li>
+  </ul>
+  <p>The application only requests the minimum required permissions: <code>video.upload</code>, <code>video.publish</code>, and <code>user.info.basic</code>.</p>
+
+  <h2>5. Third Party Services</h2>
+  <p>The application uses the following external services for content generation:</p>
+  <ul>
+    <li><strong>Google Gemini API</strong>: For generating health scripts and cartoon images. Text prompts are sent to Google's API. No personal data is included in these requests.</li>
+    <li><strong>Google Text to Speech (gTTS)</strong>: For generating Nepali audio narration. Only health education text is sent to this service.</li>
+  </ul>
+
+  <h2>6. Data Security</h2>
+  <ul>
+    <li>API keys and tokens are stored in a <code>.env</code> file excluded from version control via <code>.gitignore</code></li>
+    <li>No credentials are hardcoded in source code</li>
+    <li>All TikTok API communication uses HTTPS</li>
+  </ul>
+
+  <h2>7. Your Rights</h2>
+  <p>You can:</p>
+  <ul>
+    <li>Delete all locally stored data at any time</li>
+    <li>Revoke TikTok access by removing the app from your TikTok account settings</li>
+    <li>Delete generated content from the <code>output/</code> directory</li>
+  </ul>
+
+  <h2>8. Changes to This Policy</h2>
+  <p>Updates to this privacy policy will be reflected in this document with an updated date.</p>
+
+  <h2>9. Contact</h2>
+  <p>For privacy related questions, please open an issue on the <a href="https://github.com/amritbh/tiktok-health-nepal">GitHub repository</a>.</p>
+</body>
+</html>
